@@ -54,7 +54,7 @@ class Entrance implements Runnable{
 		int sum = 0;
 		for(Entrance entrance : entrances){
 			sum += entrance.getValue();
-		}
+		} 
 		return sum;
 	}
 }
