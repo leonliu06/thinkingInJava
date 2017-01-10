@@ -40,7 +40,7 @@ class WaitingTask implements Runnable{
 	}
 	public void run() {
 		try{
-			latch.await();
+			latch.await();//调用wait()的任务挂起自己，直至计数到0,即等待到问题的初始部分完成为止（TaskPortion完成）。
 			System.out.println("Latch barrier passed for " + this);
 		}catch(InterruptedException e){
 			System.out.println(this + " interrupted");
@@ -53,12 +53,12 @@ public class CountDownLatchDemo {
 	public static void main(String[] args) throws Exception{
 		ExecutorService exec = Executors.newCachedThreadPool();
 		// All must share a single CountDownLatch object:
-		CountDownLatch latch = new CountDownLatch(SIZE);
+		CountDownLatch latch = new CountDownLatch(SIZE);//值为SIZE的CountDownLatch。
 		for(int i = 0; i < 10; i++){
 			exec.execute(new WaitingTask(latch));
 		}
 		for(int i = 0; i < SIZE; i++){
-			exec.execute(new TaskPortion(latch));
+			exec.execute(new TaskPortion(latch)); //SIZE 个任务，每个任务执行完成都countDown(),所有任务完成时，计数达到0.
 		}
 		System.out.println("Launched all tasks");
 		TimeUnit.SECONDS.sleep(3);
