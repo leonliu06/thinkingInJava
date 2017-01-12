@@ -76,7 +76,9 @@ class DelayedTaskConsumer implements Runnable{
 	public void run(){
 		try{
 			while(!Thread.interrupted()){
+				//long start = System.currentTimeMillis();
 				q.take().run(); // Run task with the current thread
+				//System.out.println(System.currentTimeMillis() - start);
 			}
 		}catch(InterruptedException e){
 			// Acceptable way to exit
@@ -96,6 +98,11 @@ public class DelayQueueDemo {
 		}
 		// Set the stopping point
 		queue.add(new DelayedTask.EndSentinel(5000, exec));
+//		try{
+//			TimeUnit.MILLISECONDS.sleep(15000);
+//		}catch(InterruptedException e){
+//			//
+//		}
 		exec.execute(new DelayedTaskConsumer(queue));
 	}
 }
