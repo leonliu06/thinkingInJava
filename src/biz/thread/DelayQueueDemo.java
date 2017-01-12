@@ -76,6 +76,9 @@ class DelayedTaskConsumer implements Runnable{
 	public void run(){
 		try{
 			while(!Thread.interrupted()){
+				/*
+				 * 注意，因为DelayedTaskConsumer自身是一个任务，所以它有自己的Thread，它可以使用这个线程来运行从队列中获取的所有任务。
+				 * */
 				//long start = System.currentTimeMillis();
 				q.take().run(); // Run task with the current thread
 				//System.out.println(System.currentTimeMillis() - start);

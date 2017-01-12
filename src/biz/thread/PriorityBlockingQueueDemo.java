@@ -21,7 +21,8 @@ class PrioritizedTask implements Runnable, Comparable<PrioritizedTask>{
 	}
 	public void run(){
 		try{
-			TimeUnit.MILLISECONDS.sleep(rand.nextInt(250));
+			//TimeUnit.MILLISECONDS.sleep(rand.nextInt(250));
+			TimeUnit.MILLISECONDS.sleep(500);
 		}catch(InterruptedException e){
 			// 
 		}
@@ -40,15 +41,10 @@ class PrioritizedTask implements Runnable, Comparable<PrioritizedTask>{
 			exec = e;
 		}
 		public void run(){
-			int count = 0;
+			System.out.println(this + " Calling shutdownNow()");
 			for(PrioritizedTask pt : sequece){
 				System.out.println(pt.summary());
-				if(++count % 5 == 0){
-					System.out.println();
-				}
 			}
-			System.out.println();
-			System.out.println(this + "Calling shutdownNow()");
 			exec.shutdownNow();
 		}
 	}
@@ -72,7 +68,7 @@ class PrioritizedTaskProducer implements Runnable{
 		// Trickle in highest-priority jobs:
 		try{
 			for(int i = 0; i < 10; i++){
-				TimeUnit.MILLISECONDS.sleep(250);
+				//TimeUnit.MILLISECONDS.sleep(250);
 				queue.add(new PrioritizedTask(10));
 			}
 			// Add jobs, lowest priority first:
@@ -81,7 +77,7 @@ class PrioritizedTaskProducer implements Runnable{
 			}
 			// A sentinel to stop all the tasks:
 			queue.add(new PrioritizedTask.EndSentinel(exec));
-		}catch(InterruptedException e){
+		}catch(Exception e){
 			//
 		}
 		System.out.println("Finished PrioritizedTaskProducer");
@@ -112,6 +108,7 @@ public class PriorityBlockingQueueDemo {
 		ExecutorService exec = Executors.newCachedThreadPool();
 		PriorityBlockingQueue<Runnable> queue = new PriorityBlockingQueue<Runnable>();
 		exec.execute(new PrioritizedTaskProducer(queue, exec));
+		TimeUnit.MILLISECONDS.sleep(3000);
 		exec.execute(new PrioritizedTaskConsumer(queue));
 	}
 }
