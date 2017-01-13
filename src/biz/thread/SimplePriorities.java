@@ -3,6 +3,8 @@ package biz.thread;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+
+
 public class SimplePriorities implements Runnable {
 	private int countDown = 5;
 	private volatile double d; //No optimization
