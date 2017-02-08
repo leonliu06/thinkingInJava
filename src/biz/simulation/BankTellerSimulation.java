@@ -44,7 +44,7 @@ class CustomerGenerator implements Runnable{
 	public void run(){
 		try{
 			while(!Thread.interrupted()){
-				TimeUnit.MILLISECONDS.sleep(rand.nextInt(300));
+				TimeUnit.MILLISECONDS.sleep(rand.nextInt(500));
 				customers.put(new Customer(rand.nextInt(1000)));
 			}
 		}catch(InterruptedException e){
@@ -87,7 +87,7 @@ class Teller implements Runnable, Comparable<Teller>{
 		servingCustomerLine = false;
 	}
 	public synchronized void serveCustomerLine(){
-		assert !servingCustomerLine:"already srving: " + this;
+		assert !servingCustomerLine:"already serving: " + this;
 		servingCustomerLine = true;
 		notifyAll();
 	}
@@ -174,7 +174,7 @@ class TellerManager implements Runnable{
 
 public class BankTellerSimulation{
 	static final int MAX_LINE_SIZE = 50;
-	static final int ADJUSTMENT_PERIOD = 1000;
+	static final int ADJUSTMENT_PERIOD = 10000;
 	public static void main(String[] args) throws Exception{
 		ExecutorService exec = Executors.newCachedThreadPool();
 		// If line is too long, customers will leave:
