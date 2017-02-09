@@ -1,4 +1,4 @@
-//package biz.simulation;
+package biz.simulation;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -44,7 +44,7 @@ class CustomerGenerator implements Runnable{
 	public void run(){
 		try{
 			while(!Thread.interrupted()){
-				TimeUnit.MILLISECONDS.sleep(rand.nextInt(500));
+				TimeUnit.MILLISECONDS.sleep(50);
 				customers.put(new Customer(rand.nextInt(1000)));
 			}
 		}catch(InterruptedException e){
@@ -87,12 +87,13 @@ class Teller implements Runnable, Comparable<Teller>{
 		servingCustomerLine = false;
 	}
 	public synchronized void serveCustomerLine(){
-		assert !servingCustomerLine:"already serving: " + this;
+		assert !servingCustomerLine: "already serving: " + this;
 		servingCustomerLine = true;
+		//customerServed++;
 		notifyAll();
 	}
-	public String toString(){ return "Teller " + id + " "; }
-	public String shortString(){ return "T" + id; }
+	public String toString(){ return "Teller " + id + " customerServed: " + customerServed + " "; }
+	public String shortString(){ return "T" + id + " customerServed: " + customerServed + " "; }
 	// Used by priority queue:
 	public synchronized int compareTo(Teller other){
 		return customerServed < other.customerServed ? -1 : 
@@ -116,6 +117,33 @@ class TellerManager implements Runnable{
 		exec.execute(teller);
 		workingTellers.add(teller);
 	}
+	
+	public void run(){
+		try{
+			while(!Thread.interrupted()){
+				TimeUnit.MICROSECONDS.sleep(adjustmentPeriod);
+				adjustTellerNumber();
+				System.out.print(customers + " { ");
+				for(Teller teller : workingTellers){
+					System.out.print(teller.shortString() + " ");
+				}
+				System.out.println("}");
+			}
+		}catch(InterruptedException e){
+			System.out.println(this + "interrupted");
+		}
+		System.out.println(this + "terminating");
+	}
+	
+	public String toString(){ return "TellerManager "; }
+	
+	// Give a teller a different job or a break:
+	private void reassignOneTeller(){
+		Teller teller = workingTellers.poll();
+		teller.doSomethingElse();
+		tellersDoingOtherThings.offer(teller);
+	}
+	
 	public void adjustTellerNumber(){
 		// This is actually a control system. By adjusting the numbers, 
 		// you can reveal stability issues in the control mechanism.
@@ -145,41 +173,17 @@ class TellerManager implements Runnable{
 			}
 		}
 	}
-	
-	// Give a teller a different job or a break:
-	private void reassignOneTeller(){
-		Teller teller = workingTellers.poll();
-		teller.doSomethingElse();
-		tellersDoingOtherThings.offer(teller);
-	}
-	
-	public void run(){
-		try{
-			while(!Thread.interrupted()){
-				TimeUnit.MICROSECONDS.sleep(adjustmentPeriod);
-				adjustTellerNumber();
-				System.out.print(customers + " { ");
-				for(Teller teller : workingTellers){
-					System.out.print(teller.shortString() + " ");
-				}
-				System.out.println("}");
-			}
-		}catch(InterruptedException e){
-			System.out.println(this + "interrupted");
-		}
-		System.out.println(this + "terminating");
-	}
-	public String toString(){ return "TellerManager "; }
 }
 
 public class BankTellerSimulation{
 	static final int MAX_LINE_SIZE = 50;
-	static final int ADJUSTMENT_PERIOD = 10000;
+	static final int ADJUSTMENT_PERIOD = 1000;
 	public static void main(String[] args) throws Exception{
 		ExecutorService exec = Executors.newCachedThreadPool();
 		// If line is too long, customers will leave:
 		CustomerLine customers = new CustomerLine(MAX_LINE_SIZE);
 		exec.execute(new CustomerGenerator(customers));
+		//TimeUnit.MILLISECONDS.sleep(100);
 		// Manager will add and remove tellers as necessary:
 		exec.execute(new TellerManager(exec, customers, ADJUSTMENT_PERIOD));
 		if(args.length > 0){// Optional argument
