@@ -2,7 +2,6 @@ package biz.simulation;
 
 import java.util.*;
 import java.util.concurrent.*;
-import java.lang.reflect.*;
 
 //import biz.thread.Restaurant;
 import enumerated.menu.*;
@@ -46,6 +45,7 @@ class CustomerA implements Runnable{
 			Food food = course.randomSelection();
 			try{
 				waitPerson.placeOrder(this, food);
+				//TimeUnit.MILLISECONDS.sleep(3000);
 				// Blocks until course has been delivered:
 				System.out.println(this + "eating " + placeSetting.take());
 			}catch(InterruptedException e){
@@ -61,6 +61,7 @@ class CustomerA implements Runnable{
 	}
 }
 
+// This is what comes back from the Chef
 class Plate{
 	private final Order order;
 	private final Food food;
@@ -166,7 +167,6 @@ class Restaurant implements Runnable{
 			System.out.println("Restaurant interrupted");
 		}
 		System.out.println("Restaurant closing");
-		
 	}
 }
 
@@ -183,6 +183,6 @@ public class RestaurantWithQueues {
 			System.in.read();
 		}
 		exec.shutdownNow();
-	}	
+	}
 	
 }
