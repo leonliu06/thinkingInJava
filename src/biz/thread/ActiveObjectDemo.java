@@ -3,6 +3,7 @@ package biz.thread;
 import java.util.*;
 import java.util.concurrent.*;
 
+
 public class ActiveObjectDemo {
 
 	private ExecutorService ex = Executors.newSingleThreadExecutor();
@@ -56,5 +57,6 @@ public class ActiveObjectDemo {
 				}
 		}
 		d1.shutdown();
+		
 	}
 }
