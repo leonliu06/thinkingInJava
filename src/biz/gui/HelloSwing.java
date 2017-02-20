@@ -15,7 +15,7 @@ public class HelloSwing {
 		TimeUnit.SECONDS.sleep(1);
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				label.setText("Hey! This is Different!");				
+				//label.setText("Hey! This is Different!");				
 			}
 		});
 	}
