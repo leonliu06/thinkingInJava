@@ -24,11 +24,11 @@ public enum RoShamBo2 implements Competitor<RoShamBo2> {
 	private Outcome vPAPER, vSCISSORS, vROCK;
 	
 	RoShamBo2(Outcome paper, Outcome scissors, Outcome rock) {
-		// TODO Auto-generated constructor stub
 		this.vPAPER = paper;
 		this.vSCISSORS = scissors;
 		this.vROCK = rock;
 	}
+	
 	public Outcome compete(RoShamBo2 it){
 		switch (it) {
 		default:
