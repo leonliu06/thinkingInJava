@@ -1,0 +1,18 @@
+1: //package biz.io;
+2: 
+3: import java.io.*;
+4: 
+5: public class FileOutputShortcut {
+6: 	static String file = "FileOutputShortcut.out";
+7: 	public static void main(String[] args) throws IOException{
+8: 		BufferedReader in = new BufferedReader(new StringReader(BufferedInputFile.read("FileOutputShortcut.java")));
+9: 		PrintWriter out = new PrintWriter(file);
+10: 		int lineCount = 1;
+11: 		String s;
+12: 		while((s = in.readLine()) != null)
+13: 			out.println(lineCount++ + ": " + s);
+14: 		out.close();
+15: 		// Show the stored file:
+16: 		System.out.println(BufferedInputFile.read(file));
+17: 	}
+18: }
