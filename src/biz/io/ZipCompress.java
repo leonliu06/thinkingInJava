@@ -1,8 +1,8 @@
+package biz.io;
+
 import java.io.*;
 import java.util.*;
 import java.util.zip.*;
-
-//package biz.io;
 
 public class ZipCompress {
 	public static void main(String[] args) throws IOException {

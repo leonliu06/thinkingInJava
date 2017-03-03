@@ -1,4 +1,4 @@
-//package biz.io;
+package biz.io;
 
 import java.util.*;
 import java.util.zip.GZIPInputStream;

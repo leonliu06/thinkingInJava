@@ -1,8 +1,9 @@
+package biz.io;
+
 import java.io.*;
 import java.nio.channels.*;
 import java.util.concurrent.*;
 
-//package biz.io;
 
 public class FileLocking {
 	public static void main(String[] args) throws Exception {

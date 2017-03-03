@@ -1,4 +1,4 @@
-//package biz.io.xfiles;
+package biz.io.xfiles;
 
 import java.io.*;
 

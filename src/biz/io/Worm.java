@@ -1,4 +1,4 @@
-//package biz.io;
+package biz.io;
 
 import java.io.*;
 import java.util.*;

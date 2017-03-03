@@ -1,4 +1,4 @@
-//package biz.io;
+package biz.io;
 
 import java.nio.charset.Charset;
 import java.util.Iterator;

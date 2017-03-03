@@ -1,4 +1,4 @@
-//package biz.io;
+package biz.io;
 
 public class OSExecuteException extends RuntimeException {
 	public OSExecuteException(String why) { super(why); }
