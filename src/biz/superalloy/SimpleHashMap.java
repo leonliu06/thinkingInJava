@@ -5,7 +5,7 @@ import java.util.*;
 public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
 	// Choose a prime number for the hash table size, to achieve a uniform distribution:
 	static final int SIZE = 997;
-	// You can't hava a physical array of generics, but you can upcast to one:
+	// You can't have a physical array of generics, but you can upcast to one:
 	@SuppressWarnings("unchecked")
 	LinkedList<MapEntry<K,V>>[] buckets = new LinkedList[SIZE];
 	
