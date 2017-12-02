@@ -1,4 +1,6 @@
-// LocalInnerClass.java
+package net.mrliuli.innerclass;
+
+// net.mrliuli.innerclass.LocalInnerClass.java
 interface Counter{
 	int next();
 }
@@ -25,7 +27,7 @@ public class LocalInnerClass{
 		return new Counter(){
 			// Anonymous inner class cannot have a named constructor, only an instance initializer:
 			{
-				System.out.println("Counter()");
+				System.out.println("net.mrliuli.innerclass.Counter()");
 			}
 			public int next(){
 				System.out.println(name);	// Access local final

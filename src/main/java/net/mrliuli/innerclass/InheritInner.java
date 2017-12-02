@@ -1,10 +1,12 @@
-// InheritInner.java
+package net.mrliuli.innerclass;
+
+// net.mrliuli.innerclass.InheritInner.java
 // Inheriting an inner class.
 class WithInner{
     class Inner{}
 }
 public class InheritInner extends WithInner.Inner{
-    // InheritInner(){} // Won't compile
+    // net.mrliuli.innerclass.InheritInner(){} // Won't compile
     InheritInner(WithInner wi){
         wi.super(); // 显式调用外围类构造函数
     }
