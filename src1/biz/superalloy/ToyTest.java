@@ -1,4 +1,4 @@
-//package biz.superalloy;
+ï»¿//package biz.superalloy;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -39,7 +39,7 @@ public class ToyTest {
 	
 	public static void main(String[] args){
 		try{
-			Toy t = Toy.class.getDeclaredConstructor(int.class).newInstance(10000);//Ê¹ÓÃ·´Éä»úÖÆ£¬Í¨¹ý·ÇÄ¬ÈÏ¹¹ÔìÆ÷´´½¨Toy¶ÔÏó
+			Toy t = Toy.class.getDeclaredConstructor(int.class).newInstance(10000);//??ï¿½ï¿½????????????????????????Toy????
 			System.out.println(t.toString());
 			System.out.println(t.hashCode());
 			System.out.println(t.getClass());
