@@ -1,10 +1,11 @@
-package biz.superalloy;
+package net.mrliuli.generics.coffee;
 
-import java.util.Iterator;
-import java.util.Random;
+import net.mrliuli.generics.Generator;
+import java.util.*;
 
-import coffee.*;
-
+/**
+ * Generate different types of Coffee
+ */
 public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee>{
 	
 	private Class[] types = { Latte.class, Mocha.class, Cappuccino.class, Americano.class, Breve.class };
@@ -15,9 +16,9 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee>{
 	
 	// for iterator
 	private int size = 0;
-	
-	public CoffeeGenerator(int sz){ size = sz; }//用于foreach迭代
-	
+	public CoffeeGenerator(int sz){ size = sz; }
+
+	@Override
 	public Coffee next(){
 		try{
 			return (Coffee)types[rand.nextInt(types.length)].newInstance();
@@ -25,19 +26,27 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee>{
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	class CoffeeIterator implements Iterator<Coffee>{
+
 		int count = size;
+
+		@Override
 		public boolean hasNext() { return count > 0; }
+
+		@Override
 		public Coffee next(){
 			count--;
-			return CoffeeGenerator.this.next();//类名.this访问外部类对象
+			return CoffeeGenerator.this.next();
 		}
+
+		@Override
 		public void remove(){// Not implemented
 			throw new UnsupportedOperationException();
 		}
 	};
-	
+
+	@Override
 	public Iterator<Coffee> iterator(){
 		return new CoffeeIterator();
 	}
@@ -47,7 +56,8 @@ public class CoffeeGenerator implements Generator<Coffee>, Iterable<Coffee>{
 		for(int i = 0; i < 5; i++){
 			System.out.println(gen.next());
 		}
-		for(Coffee c : new CoffeeGenerator(5)){//实现Iterator,可foreach迭代
+		System.out.println("========================");
+		for(Coffee c : new CoffeeGenerator(5)){
 			System.out.println(c);
 		}
 	}

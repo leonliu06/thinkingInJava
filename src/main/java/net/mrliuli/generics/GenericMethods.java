@@ -1,9 +1,11 @@
-package biz.superalloy;
+package net.mrliuli.generics;
 
 public class GenericMethods {
-	public <T> void f(T x){//要定义泛型方法，只需要将泛型参数列表置于返回值之前
+
+	public <T> void f(T x){
 		System.out.println(x.getClass().getName());
 	}
+
 	public static void main(String[] args){
 		GenericMethods gm = new GenericMethods();
 		gm.f("");
@@ -13,4 +15,5 @@ public class GenericMethods {
 		gm.f('c');
 		gm.f(gm);
 	}
+
 }
