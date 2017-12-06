@@ -18,6 +18,15 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- 本地依赖 -->
+    <dependency>
+      <groupId>net.mindview</groupId>
+      <artifactId>util</artifactId>
+      <version>1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/lib/net.jar</systemPath>
+    </dependency>
+
   </dependencies>
 
 
