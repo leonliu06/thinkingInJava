@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.rtti;
 
 interface Interface{
 	void doSomething();
