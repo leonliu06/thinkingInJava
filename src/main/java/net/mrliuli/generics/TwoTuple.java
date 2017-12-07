@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.generics;
 
 public class TwoTuple<A, B> {
 	public final A first;

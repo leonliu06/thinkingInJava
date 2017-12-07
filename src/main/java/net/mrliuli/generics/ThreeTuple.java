@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.generics;
 
 public class ThreeTuple<A,B,C> extends TwoTuple<A, B> {
 	public final C third;

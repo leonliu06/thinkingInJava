@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.generics;
 
 import java.io.PrintStream;
 import java.util.Formatter;
