@@ -19,7 +19,7 @@ public class Wildcards {
 
     // Similar to rawArgs(), but errors
     static void unboundedArg(Holder<?> holder, Object arg){
-        //holder.set(arg);  // Error:
+        // holder.set(arg);  // Error:
         //holder.set(new Wildcards());  // Same error
 
         // Can't do this, don't have any 'T':
@@ -76,6 +76,5 @@ public class Wildcards {
         Object r1 = exact1(raw);
         Long r2 = exact1(qualified);
         Object r3 = exact1(unbounded);  // Must return Object
-
     }
 }

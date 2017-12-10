@@ -1,7 +1,6 @@
-package biz.superalloy;
+package net.mrliuli.containers;
 
 import java.util.*;
-import java.util.concurrent.ExecutionException;
 
 class SetType{
 	int i;

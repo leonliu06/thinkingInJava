@@ -1,5 +1,7 @@
 package net.mrliuli.generics;
 
+import java.util.Set;
+
 /**
  * A generic interface
  * @param <T>

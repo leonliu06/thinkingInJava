@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.containers;
 
 import java.util.*;
 
@@ -49,7 +49,7 @@ public class SlowMap<K, V> extends AbstractMap<K, V> {
 		return oldValue;		
 	}
 	
-	public V get(Object key){ // key is type Object, not K ÒòÎª½Ó¿ÚMap<K,V>ÖĞÊÇV get(Object key);ËùÒÔÕâÀï²ÎÊıÒ²±ØĞëÊÇObject key.ÕâÊÇ½«·ºĞÍ×¢Èëµ½JavaÓïÑÔÖĞµÄÊ±¿ÌÈç´ËÖ®ÍíËùµ¼ÖÂµÄ½á¹û£¬Èç¹û·ºĞÍÊÇJavaÓïÑÔ×î³õ¾Í¾ß±¸µÄÊôĞÔ£¬ÄÇÃ´get()¾Í¿ÉÒÔÖ´ĞĞÆä²ÎÊıµÄÀàĞÍ¡£
+	public V get(Object key){ // key is type Object, not K ï¿½ï¿½Îªï¿½Ó¿ï¿½Map<K,V>ï¿½ï¿½ï¿½ï¿½V get(Object key);ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Object key.ï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ëµ½Javaï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ß±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½Ã´get()ï¿½Í¿ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½
 		if(!keys.contains(key)){
 			return null;
 		}

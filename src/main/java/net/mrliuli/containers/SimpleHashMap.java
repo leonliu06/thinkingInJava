@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.containers;
 
 import java.util.*;
 
@@ -8,17 +8,19 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
 	// You can't have a physical array of generics, but you can upcast to one:
 	@SuppressWarnings("unchecked")
 	LinkedList<MapEntry<K,V>>[] buckets = new LinkedList[SIZE];
-	
+
+	@Override
 	public V put(K key, V value){
-		V oldValue = null;
 		int index = Math.abs(key.hashCode()) % SIZE;
 		if(buckets[index] == null){
 			buckets[index] = new LinkedList<MapEntry<K,V>>();
 		}
+
 		LinkedList<MapEntry<K,V>> bucket = buckets[index];
 		MapEntry<K,V> pair = new MapEntry<K,V>(key, value);
+
 		boolean found = false;
-		
+		V oldValue = null;
 		ListIterator<MapEntry<K,V>> it = bucket.listIterator();
 		while(it.hasNext()){
 			MapEntry<K,V> iPair = it.next();
@@ -36,7 +38,8 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
 				
 		return oldValue;
 	}
-	
+
+	@Override
 	public V get(Object key){
 		int index = Math.abs(key.hashCode()) % SIZE;
 		if(buckets[index] == null) return null;
@@ -47,7 +50,8 @@ public class SimpleHashMap<K, V> extends AbstractMap<K, V> {
 		}
 		return null;
 	}
-	
+
+	@Override
 	public Set<Map.Entry<K,V>> entrySet(){
 		Set<Map.Entry<K,V>> set = new HashSet<Map.Entry<K, V>>();
 		for(LinkedList<MapEntry<K,V>> bucket : buckets){
