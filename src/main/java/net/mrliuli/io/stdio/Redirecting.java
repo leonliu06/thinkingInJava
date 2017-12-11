@@ -1,7 +1,10 @@
-package net.mrliuli.io;
+package net.mrliuli.io.stdio;
 
 import java.io.*;
 
+/**
+ * 标准I/O重定向
+ */
 public class Redirecting {
 	public static void main(String[] args) throws IOException {
 		PrintStream console = System.out;

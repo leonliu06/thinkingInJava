@@ -1,7 +1,10 @@
-package net.mrliuli.io;
+package net.mrliuli.io.uses;
 
 import java.io.*;
 
+/**
+ * 读写随机访问文件
+ */
 public class UsingRandomAccessFile {
 	static String file = "rtest.dat";
 	static void display() throws IOException {

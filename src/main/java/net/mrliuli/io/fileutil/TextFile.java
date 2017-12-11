@@ -1,8 +1,11 @@
-package net.mrliuli.io;
+package net.mrliuli.io.fileutil;
 
 import java.io.*;
 import java.util.*;
 
+/**
+ * 文件读写实用工具
+ */
 public class TextFile extends ArrayList<String> {
 	// Read a file as a single string:
 	public static String read(String fileName) {

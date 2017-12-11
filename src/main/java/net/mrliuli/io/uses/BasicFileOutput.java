@@ -1,7 +1,10 @@
-package net.mrliuli.io;
+package net.mrliuli.io.uses;
 
 import java.io.*;
 
+/**
+ * 基本的文件输出
+ */
 public class BasicFileOutput {
 	static String file = "BasicFileOutput.out";
 	public static void main(String[] args) throws IOException{

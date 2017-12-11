@@ -1,7 +1,10 @@
-package net.mrliuli.io;
+package net.mrliuli.io.uses;
 
 import java.io.*;
 
+/**
+ * 文本文件输出的快捷方式
+ */
 public class FileOutputShortcut {
 	static String file = "Data.txt";
 	public static void main(String[] args) throws IOException{

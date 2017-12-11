@@ -1,7 +1,10 @@
-package biz.io;
+package net.mrliuli.io.fileutil;
 
 import java.io.*;
 
+/**
+ * 读取二进制文件
+ */
 public class BinaryFile {
 	public static byte[] read(File bFile) throws IOException {
 		BufferedInputStream bf = new BufferedInputStream(new FileInputStream(bFile));
