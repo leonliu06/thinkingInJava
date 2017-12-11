@@ -1,8 +1,10 @@
-package biz.superalloy;
+package net.mrliuli.containers;
+
+import net.mrliuli.generics.Generator;
 
 import java.util.*;
 
-class Government implements Generator<String>{
+class Government implements Generator<String> {
 	String[] foundation = ("strange women lying in ponds " + "distributing swords is no basis for a system of " + "government").split(" ");
 	private int index;
 	public String next(){

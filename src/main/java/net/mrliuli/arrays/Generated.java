@@ -1,7 +1,7 @@
-package biz.arrays;
+package net.mrliuli.arrays;
 
-import biz.superalloy.*;
-
+import net.mrliuli.containers.CollectionData;
+import net.mrliuli.generics.*;
 
 public class Generated {
 	// Fill an existing array:

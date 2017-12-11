@@ -1,8 +1,8 @@
-package biz.arrays;
+package net.mrliuli.arrays;
+
+import net.mrliuli.generics.Generator;
 
 import java.util.*;
-
-import biz.superalloy.*;
 
 public class CountingGenerator {
 	public static class

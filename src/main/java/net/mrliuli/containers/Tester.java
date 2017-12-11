@@ -1,8 +1,8 @@
-package biz.PerformanceTuning;
+package net.mrliuli.containers;
+
+import net.mrliuli.arrays.*;
 
 import java.util.concurrent.*;
-import biz.arrays.*;
-import biz.superalloy.*;
 
 public abstract class Tester<C> {
 	static int testReps = 10;

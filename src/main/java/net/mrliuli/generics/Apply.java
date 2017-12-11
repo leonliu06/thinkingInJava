@@ -1,11 +1,8 @@
 package net.mrliuli.generics;
 
-import sun.security.provider.SHA;
-
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by leon on 2017/12/10.

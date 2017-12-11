@@ -1,4 +1,4 @@
-package biz.superalloy;
+package net.mrliuli.containers;
 
 public class CollectionDataGeneration {
 	public static void main(String[] args){

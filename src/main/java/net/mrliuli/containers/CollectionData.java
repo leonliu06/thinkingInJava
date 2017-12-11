@@ -1,4 +1,6 @@
-package biz.superalloy;
+package net.mrliuli.containers;
+
+import net.mrliuli.generics.*;
 
 import java.util.*;
 
