@@ -1,5 +1,5 @@
 //using inner classes for callbacks
-package net.mrliuli;
+package net.mrliuli.innerclass;
 
 interface Incrementable{
 	void increment();
