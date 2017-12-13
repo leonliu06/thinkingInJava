@@ -17,6 +17,9 @@ public class BufferToText {
 		buff.flip();
 		// Doesn't work:
 		System.out.println(buff.asCharBuffer());
+//		while (buff.hasRemaining()){
+//			System.out.println((char) buff.get());
+//		}
 		// Decode using this system's default Charset:
 		buff.rewind();
 		String encoding = System.getProperty("file.encoding");
@@ -36,6 +39,9 @@ public class BufferToText {
 		fc = new FileOutputStream("data2.txt").getChannel();
 		buff = ByteBuffer.allocate(24); // More than needed
 		buff.asCharBuffer().put("Some text");
+//		System.out.println(CharBuffer.class.isInstance(buff));
+//		System.out.println(ByteBuffer.class.isInstance(buff));
+//		System.out.println("==========");
 		fc.write(buff);
 		fc.close();
 		// Read and display
