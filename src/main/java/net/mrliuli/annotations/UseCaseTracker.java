@@ -1,33 +1,26 @@
-package net.mrliuli;
+package net.mrliuli.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.lang.reflect.*;
 import java.util.*;
 
-@Target(ElementType.METHOD) //Ԫע�⣬�����������ע�⽫Ӧ����ʲô �ط���������һ������ ����һ����
-@Retention(RetentionPolicy.RUNTIME) //Ԫע�⣬���������ע������һ��������ã���Դ���루SOURCES�������ļ���CLASS)��������ʱ��RUNTIME)
-@interface UseCase{	//����ע��
-	public int id(); //ע���Ԫ��
-	public String description() default "no description"; //descriptionԪ����һ��defaultֵ�������ע��ĳ������ʱû�и���description��ֵ�����ע��Ĵ������ͻ�ʹ�ô�Ԫ�ص�Ĭ��ֵ��
-}
-
 class PasswordUtils{
+
 	//��ע��ķ�������������û������ע��@UseCase�������κ����η���ͬ�����ڷ����� ����public��static��void��
 	//���﷨�ĽǶȿ���ע���ʹ�÷�ʽ���������η���ʹ��һģһ��
 	@UseCase(id = 47, description = "Passwords must contain at least one number")
 	public boolean validatePassword(String password){		
 		return (password.matches("\\w*\\d\\w*")); //������ʽ
 	}
-	@UseCase(id = 48) public String encryptPassword(String password){
+	@UseCase(id = 48)
+	public String encryptPassword(String password){
 		return new StringBuilder(password).reverse().toString();
 	}
+
 	@UseCase(id = 49, description = "New passwords can't equal previously used ones")
 	public boolean checkForNewPassword(List<String> prevPasswords, String password){
 		return !prevPasswords.contains(password);
 	}
+
 }
 
 public class UseCaseTracker {
