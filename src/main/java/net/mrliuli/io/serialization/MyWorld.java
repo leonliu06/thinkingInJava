@@ -13,7 +13,7 @@ class Animal implements Serializable{
 		preferredHouse = h;
 	}
 	public String toString(){
-		return name + "[" + super.toString() + "]";
+		return name + "[" + super.toString() + "], " + preferredHouse + "\n";
 	}
 }
 
@@ -42,6 +42,6 @@ public class MyWorld {
 		System.out.println("animals1: " + animals1);
 		System.out.println("animals2: " + animals2);
 		System.out.println("animals3: " + animals3);
-		
+
 	}
 }
